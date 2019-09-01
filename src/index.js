@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import './index.css';
+import reducers from './reducers';
 import App from './components/App';
+import { fetchWeatherData } from './actions/weatherDataActions';
+import weatherApiMiddleware from './middleware/weatherApiMiddleware';
+import './index.css';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  () => 'letustu',
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  reducers,
+  composeEnhancers(applyMiddleware(weatherApiMiddleware)),
 );
 
 ReactDOM.render(
@@ -17,3 +21,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
+
+store.dispatch(fetchWeatherData('Stockholm'));
