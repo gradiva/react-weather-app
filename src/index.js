@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import App from './components/App';
+import App from './components/WeatherApp';
 import { fetchWeatherData } from './actions/weatherDataActions';
 import weatherApiMiddleware from './middleware/weatherApiMiddleware';
 import './index.css';
