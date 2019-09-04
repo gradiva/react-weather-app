@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import Search from '../components/Search';
-import { fetchWeatherDataResponse } from '../actions/weatherDataActions';
+import { fetchWeatherData, fetchWeatherDataResponse } from '../actions/weatherDataActions';
 
 const mapStateToProps = (state) => ({
   data: state.weatherData.data,
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
+  fetchWeatherData,
   fetchWeatherDataResponse,
 };
 

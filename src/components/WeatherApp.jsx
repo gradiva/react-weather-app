@@ -1,23 +1,34 @@
 import React from 'react';
-import './WeatherApp.css';
+import PropTypes from 'prop-types';
 import SearchContainer from '../containers/SearchContainer';
+import WeatherDisplayContainer from '../containers/WeatherDisplayContainer';
+import '../css/WeatherApp.css';
 
-// export default class WeatherApp extends React.PureComponent {
-//   render() {
-//     return (
-//       <main className="main">
-//         {/* <Search className="search-section" />
-//         <WeatherDisplay className="weather-display" /> */}
-//       </main>
-//     );
-//   }
-// }
+export default class WeatherApp extends React.PureComponent {
+  render() {
+    const { fetchWeatherData } = this.props;
 
-const WeatherApp = ({ data }) => (
-  <main className="main">
-    <SearchContainer className="search-section" />
-    {/* <WeatherDisplay className="weather-display" /> */}
-  </main>
-);
+    return (
+      <main className="main">
+        <SearchContainer
+          fetchWeatherData={fetchWeatherData}
+          className="search-section"
+        />
+        <WeatherDisplayContainer className="weather-display" />
+      </main>
+    );
+  }
+}
 
-export default WeatherApp;
+WeatherApp.propTypes = {
+  fetchWeatherData: PropTypes.func.isRequired,
+};
+
+// const WeatherApp = ({ data }) => (
+//   <main className="main">
+//     <SearchContainer className="search-section" />
+//     {/* <WeatherDisplay className="weather-display" /> */}
+//   </main>
+// );
+
+// export default WeatherApp;

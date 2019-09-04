@@ -1,5 +1,6 @@
 import React from 'react';
-import './Search.css';
+import PropTypes from 'prop-types';
+import '../css/Search.css';
 
 class Search extends React.PureComponent {
   constructor(props) {
@@ -10,6 +11,7 @@ class Search extends React.PureComponent {
   }
 
   render() {
+    const { onClick } = this.props;
     return (
       <section className="search-section">
         <form ref={this.formRef}>
@@ -17,13 +19,15 @@ class Search extends React.PureComponent {
             Location
             <input ref={this.titleRef} type="text" name="location" />
           </label>
-          <div>
-            {/* <Button className="button search" onClick={alert('test')} value="Search" /> */}
-          </div>
+          <button className="search-button" type="button" onClick={onClick}>Search</button>
         </form>
       </section>
     );
   }
 }
+
+Search.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Search;
