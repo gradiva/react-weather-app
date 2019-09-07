@@ -25,7 +25,7 @@ export default (state = getInitialState(), action) => {
       return {
         ...state,
         data: action.data,
-        status: status.OK,
+        status: action.data.cod === 200 ? status.OK : status.ERROR,
       };
 
     case types.FETCH_WEATHER_DATA_ERROR:

@@ -5,21 +5,27 @@ import '../css/Search.css';
 class Search extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.inputFieldRef = React.createRef();
+  }
 
-    this.formRef = React.createRef();
-    this.locationRef = React.createRef();
+  onSubmit = (event) => {
+    event.preventDefault();
+
+    const { fetchWeatherData } = this.props;
+    const query = this.inputFieldRef.current.value;
+
+    fetchWeatherData(query);
   }
 
   render() {
-    const { onClick } = this.props;
     return (
       <section className="search-section">
-        <form ref={this.formRef}>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="location">
             Location
-            <input ref={this.titleRef} type="text" name="location" />
+            <input ref={this.inputFieldRef} type="text" name="location" />
           </label>
-          <button className="search-button" type="button" onClick={onClick}>Search</button>
+          <button className="search-button" type="submit">Search</button>
         </form>
       </section>
     );
@@ -27,7 +33,7 @@ class Search extends React.PureComponent {
 }
 
 Search.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  fetchWeatherData: PropTypes.func.isRequired,
 };
 
 export default Search;

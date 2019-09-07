@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import WeatherAppContainer from './containers/WeatherAppContainer';
+import WeatherApp from './components/WeatherApp';
 import { fetchWeatherData } from './actions/weatherDataActions';
 import weatherApiMiddleware from './middleware/weatherApiMiddleware';
 import './index.css';
@@ -17,7 +17,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <WeatherAppContainer />
+    <WeatherApp />
   </Provider>,
   document.getElementById('root'),
 );
