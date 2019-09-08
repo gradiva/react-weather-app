@@ -21,12 +21,12 @@ class WeatherDisplay extends React.PureComponent {
 
     return (
       <section className="display-section">
-        <div className="weather-info">
-          <div className="weather-description">{weatherDescription}</div>
+        <div className="weather-info text-info">
           <img src={getWeatherIconUrl(weatherIconId)} className="weather-icon" alt="" />
+          <p className="weather-description">{weatherDescription}</p>
         </div>
-        <div className="temperature">{`${temperature}°C`}</div>
-        <div className="location">{location}</div>
+        <p className="temperature text-temperature">{`${temperature}°C`}</p>
+        <p className="location text-location">{location}</p>
       </section>
     );
   }

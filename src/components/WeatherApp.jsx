@@ -7,7 +7,6 @@ export default class WeatherApp extends React.PureComponent {
   render() {
     return (
       <main className="main">
-        <h1>Weather Forecast</h1>
         <SearchContainer />
         <WeatherDisplayContainer />
       </main>

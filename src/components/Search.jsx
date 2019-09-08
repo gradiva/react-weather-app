@@ -20,12 +20,15 @@ class Search extends React.PureComponent {
   render() {
     return (
       <section className="search-section">
-        <form onSubmit={this.onSubmit}>
-          <label htmlFor="location">
-            Location
-            <input ref={this.inputFieldRef} type="text" name="location" />
-          </label>
-          <button className="search-button" type="submit">Search</button>
+        <form className="search-box" onSubmit={this.onSubmit}>
+          <input
+            className="location input"
+            ref={this.inputFieldRef}
+            type="text"
+            name="location"
+            placeholder="Location"
+          />
+          <button className="search-button button" type="submit">Search</button>
         </form>
       </section>
     );
