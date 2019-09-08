@@ -9,10 +9,10 @@ class WeatherDisplay extends React.PureComponent {
     const { data, status } = this.props;
 
     if (status === 'error' && data && data.message) {
-      return <p>{data.message}</p>;
+      return <section className="display-section"><p className="text-message">{data.message}</p></section>;
     }
 
-    if (status !== 'ok') return null;
+    if (status !== 'ok') return <section className="display-section" />;
 
     const location = data.name;
     const weatherDescription = data.weather[0].main;
@@ -25,8 +25,8 @@ class WeatherDisplay extends React.PureComponent {
           <img src={getWeatherIconUrl(weatherIconId)} className="weather-icon" alt="" />
           <p className="weather-description">{weatherDescription}</p>
         </div>
-        <p className="temperature text-temperature">{`${temperature}°C`}</p>
-        <p className="location text-location">{location}</p>
+        <div className="text-temperature temperature">{`${temperature}°C`}</div>
+        <div className="text-location location">{location}</div>
       </section>
     );
   }
