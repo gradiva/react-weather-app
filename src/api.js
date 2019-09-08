@@ -16,3 +16,5 @@ export const fetchWeatherData = (query) => {
   return fetch(url)
     .then((response) => response.json());
 };
+
+export const getWeatherIconUrl = (iconId) => `http://openweathermap.org/img/wn/${iconId}@2x.png`;

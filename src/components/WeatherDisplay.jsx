@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/WeatherDisplay.css';
 import { kelvinToCelsius } from '../utils/temperature';
+import { getWeatherIconUrl } from '../api';
 
 class WeatherDisplay extends React.PureComponent {
   render() {
@@ -16,12 +17,16 @@ class WeatherDisplay extends React.PureComponent {
     const location = data.name;
     const weatherDescription = data.weather[0].main;
     const temperature = Math.round(kelvinToCelsius(data.main.temp));
+    const weatherIconId = data.weather[0].icon;
 
     return (
-      <section className="weather-section">
-        <div className="weather-icon">{weatherDescription}</div>
+      <section className="display-section">
+        <div className="weather-info">
+          <div className="weather-description">{weatherDescription}</div>
+          <img src={getWeatherIconUrl(weatherIconId)} className="weather-icon" alt="" />
+        </div>
         <div className="temperature">{`${temperature}°C`}</div>
-        <div className="city">{location}</div>
+        <div className="location">{location}</div>
       </section>
     );
   }
